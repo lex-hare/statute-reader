@@ -148,15 +148,68 @@ interface RawLawsRoot {
   Laws: RawLaw[]
 }
 
+// ── 重試輔助函式（指數退避）──
+
+interface RetryOptions {
+  maxRetries: number
+  baseDelayMs: number
+  timeoutMs: number
+}
+
+const DEFAULT_RETRY: RetryOptions = {
+  maxRetries: 3,
+  baseDelayMs: 2000,
+  timeoutMs: 60000,
+}
+
+async function fetchWithRetry(
+  url: string,
+  options: RequestInit,
+  retryOpts: RetryOptions = DEFAULT_RETRY,
+): Promise<Response> {
+  let lastError: Error | null = null
+
+  for (let attempt = 1; attempt <= retryOpts.maxRetries; attempt++) {
+    try {
+      const controller = new AbortController()
+      const timer = setTimeout(() => controller.abort(), retryOpts.timeoutMs)
+
+      try {
+        const res = await fetch(url, { ...options, signal: controller.signal })
+        return res
+      } finally {
+        clearTimeout(timer)
+      }
+    } catch (err) {
+      lastError = err instanceof Error ? err : new Error(String(err))
+
+      if (attempt < retryOpts.maxRetries) {
+        const delay = retryOpts.baseDelayMs * 2 ** (attempt - 1)
+        console.log(`第 ${attempt} 次失敗（${lastError.message}），${delay / 1000} 秒後重試 …`)
+        await new Promise((resolve) => setTimeout(resolve, delay))
+      }
+    }
+  }
+
+  throw lastError ?? new Error('重試次數已耗盡')
+}
+
 // ── API 互動 — 下載整包 JSON（可能包在 ZIP 內），建立 pcode 查詢表 ──
 
 let cachedLawsByPcode: Map<string, RawLaw> | null = null
 
+const USER_AGENT = 'tw-laws-viewer/1.0 (GitHub Actions; +https://github.com/zane/tw-laws-viewer)'
+
 async function fetchAllLaws(): Promise<Map<string, RawLaw>> {
   if (cachedLawsByPcode) return cachedLawsByPcode
 
-  console.log('  🌐 請求 API …')
-  const res = await fetch(API_URL, { headers: { Accept: 'application/json' } })
+  console.log('請求 API …')
+  const res = await fetchWithRetry(API_URL, {
+    headers: {
+      Accept: 'application/json',
+      'User-Agent': USER_AGENT,
+    },
+  })
   if (!res.ok) {
     throw new Error(`下載失敗：HTTP ${res.status}`)
   }
