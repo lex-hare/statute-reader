@@ -19,7 +19,15 @@ export interface LawEntry {
  * 左欄 accordion 的分類顯示順序。
  * 列在此陣列中的分類按順序顯示；未列入的分類附加在最後。
  */
-export const categoryOrder: string[] = ['民事法', '刑事法', '商事法', '憲法', '行政法', '勞社法', '其他']
+export const categoryOrder: string[] = [
+  '民事法',
+  '刑事法',
+  '商事法',
+  '憲法',
+  '行政法',
+  '勞社法',
+  '其他',
+]
 
 export const laws: LawEntry[] = [
   // ── 民法 ────────────────────────────────────────────────────
@@ -28,6 +36,7 @@ export const laws: LawEntry[] = [
   { pcode: 'B0010048', customCategory: '民事法' }, // 家事
   { pcode: 'B0010004', customCategory: '民事法' }, // 強執
   { pcode: 'B0000008', customCategory: '民事法' }, // 同性結合法
+  { pcode: 'B0000007', customCategory: '民事法' }, // 涉民法
 
   // ── 刑法 ────────────────────────────────────────────────────
   { pcode: 'C0000001', customCategory: '刑事法' }, // 刑法
@@ -59,8 +68,6 @@ export const laws: LawEntry[] = [
   { pcode: 'N0030001', customCategory: '勞社法' }, // 勞基法
 
   // ── 其他 ───────────────────────────────────
-  { pcode: 'B0000007', customCategory: '其他' }, // 涉民法
   { pcode: 'A0030133', customCategory: '其他' }, // 中標法
   { pcode: 'A0020058', customCategory: '其他' }, // 立職法
 ]
-
