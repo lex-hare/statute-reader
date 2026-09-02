@@ -1,6 +1,6 @@
-# 雲端法條本 (Taiwan Laws Viewer)
+# 雲端法條本 (Statute Reader)
 
-從[全國法規資料庫](https://law.moj.gov.tw/)擷取國考及個人學習常用法規，以純靜態部署於 Cloudflare Pages，俾快速查閱。
+從[全國法規資料庫](https://law.moj.gov.tw/)擷取國考及個人學習常用法規，以純靜態部署於 GitHub Pages，俾快速查閱。
 
 ## 功能
 
@@ -9,7 +9,7 @@
 - **即時搜尋**：左欄搜尋框可快速篩選法規名稱
 - **響應式佈局**：全寬三欄、半寬雙欄、手機單欄三種模式自動切換
 - **亮/暗主題**。
-- **靜態部署**：全國法規資料庫每次均須動態查詢，需要較長時間載入。本專案則為純靜態部署，且使用 Cloudflare 的服務來加速。
+- **靜態部署**：全國法規資料庫每次均須動態查詢，需要較長時間載入。本專案則為純靜態部署。
 
 ## 技術棧
 
@@ -18,7 +18,7 @@
 | 框架     | Nuxt 4 + TypeScript                              |
 | 內容層   | @nuxt/content v3                                 |
 | 樣式     | Pico CSS class-less + 自訂 CSS                   |
-| 部署     | Cloudflare Pages（純靜態）                       |
+| 部署     | GitHub Pages（純靜態）                           |
 | 資料同步 | GitHub Actions 每週排程從全國法規資料庫 API 獲取 |
 
 ## 開發
