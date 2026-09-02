@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   css: ['@picocss/pico/css/pico.classless.min.css', '~/assets/css/main.css'],
 
   app: {
+    baseURL: '/statute-reader/',
     head: {
       htmlAttrs: { lang: 'zh-Hant-TW' },
       meta: [
