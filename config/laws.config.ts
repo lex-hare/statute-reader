@@ -35,6 +35,7 @@ export const laws: LawEntry[] = [
   { pcode: 'B0010001', customCategory: '民事法' }, // 民訴
   { pcode: 'B0010048', customCategory: '民事法' }, // 家事
   { pcode: 'B0010004', customCategory: '民事法' }, // 強執
+  { pcode: 'B0010006', customCategory: '民事法' }, // 破產
   { pcode: 'B0000008', customCategory: '民事法' }, // 同性結合法
   { pcode: 'B0000007', customCategory: '民事法' }, // 涉民法
 
