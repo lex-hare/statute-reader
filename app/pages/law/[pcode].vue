@@ -63,7 +63,7 @@ const headings = computed(() => collectHeadings((law.value as any)?.body ?? []))
     <header class="law-header">
       <h1>{{ (law as any).name }}</h1>
       <div class="law-meta">
-        <span>{{ (law as any).lawLevel }}</span>
+        <span>{{ (law as any).lawLevel }}位階</span>
         <span v-if="(law as any).isAbolished" class="badge-abolished">（已廢止）</span>
         <span> · 最後異動日期：{{ toChineseDate((law as any).lastAmended) }}</span>
         <a
