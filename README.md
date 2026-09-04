@@ -1,6 +1,6 @@
 # 雲端法條本 (Statute Reader)
 
-從[全國法規資料庫](https://law.moj.gov.tw/)擷取國考及個人學習常用法規，以純靜態部署於 GitHub Pages，俾快速查閱。
+從[全國法規資料庫](https://law.moj.gov.tw/)擷取法律國考及學習常用法規，以純靜態部署於 GitHub Pages，俾快速查閱。
 
 ## 功能
 
