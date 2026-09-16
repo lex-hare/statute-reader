@@ -2,7 +2,7 @@
 
 import { laws } from './config/laws.config'
 
-const ASSET_BASE_URL = 'https://assets.zhenhuang.tw/tlv'
+const ASSET_BASE_URL = 'https://jura.tw/favicon'
 
 export default defineNuxtConfig({
   modules: ['@nuxt/content'],
