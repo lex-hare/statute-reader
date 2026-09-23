@@ -21,3 +21,29 @@ export function parseContent(content: string): LawLine[] {
     return { type: 'xiang' as const, text: t }
   })
 }
+
+/**
+ * 將條文轉為引用文字。
+ * - 多項：`第779條規定，「（第1項）……（第2項）……」`
+ * - 單項：`第1條規定，「……」`（不標項次，與頁面上單項不顯示項次編號一致）
+ *
+ * 項之劃分與畫面上的 `p.law-xiang` 相同；款、目併入其所屬之項。
+ */
+export function formatArticleCitation(no: string, content: string): string {
+  const paragraphs: string[] = []
+  for (const line of parseContent(content)) {
+    if (!line.text) continue
+    if (line.type === 'xiang' || paragraphs.length === 0) {
+      paragraphs.push(line.text)
+    } else {
+      paragraphs[paragraphs.length - 1] += line.text
+    }
+  }
+
+  const body =
+    paragraphs.length > 1
+      ? paragraphs.map((p, i) => `（第${i + 1}項）${p}`).join('')
+      : (paragraphs[0] ?? '')
+
+  return `${no}規定，「${body}」`
+}

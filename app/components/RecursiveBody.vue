@@ -38,7 +38,10 @@ function headingSize(level: number): string {
       :id="`article-${node.no}`"
       class="article-block"
     >
-      <span class="article-no">{{ node.no }}</span>
+      <span class="article-no">
+        {{ node.no }}
+        <CopyArticleButton :no="node.no" :content="node.content" />
+      </span>
       <div class="article-body">
         <template v-for="(p, pi) in parseContent(node.content)" :key="pi">
           <p v-if="p.text" :class="`law-${p.type}`">{{ p.text }}</p>

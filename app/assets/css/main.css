@@ -297,6 +297,39 @@ body {
   line-height: 1.8;
 }
 
+/* 條號旁的複製按鈕：覆寫 Pico class-less 對 button / [type=button] 的預設樣式 */
+.copy-article-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin: 0 0 0 0.25rem;
+  padding: 0.2rem;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--pico-muted-color, #777);
+  font-size: 0.9rem;
+  line-height: 1;
+  vertical-align: -0.1em;
+  cursor: pointer;
+}
+
+.copy-article-btn:hover {
+  color: var(--pico-primary, #0066cc);
+  background: var(--pico-muted-border-color, #f0f0f0);
+}
+
+.copy-article-btn:focus-visible {
+  color: var(--pico-primary, #0066cc);
+  box-shadow: 0 0 0 2px var(--pico-primary-focus, rgba(0, 102, 204, 0.4));
+}
+
+.copy-article-btn.copied {
+  color: var(--pico-ins-color, #2e7d32);
+}
+
 /* 中/小螢幕：條號與內文換行 */
 @media (max-width: 1099px) {
   .article-block .article-no {
