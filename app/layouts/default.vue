@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppHeader from '~/components/AppHeader.vue'
+import AppFooter from '~/components/AppFooter.vue'
 import LawSidebar from '~/components/LawSidebar.vue'
 import ChapterIndex from '~/components/ChapterIndex.vue'
 import MobileNav from '~/components/MobileNav.vue'
@@ -18,6 +19,7 @@ import { hasHeadings } from '~/composables/useCurrentLaw'
     <aside v-if="hasHeadings" id="sidebar-right">
       <ChapterIndex />
     </aside>
+    <AppFooter />
     <MobileNav />
   </div>
 </template>

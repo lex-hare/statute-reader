@@ -9,6 +9,7 @@
   --col-left: 220px;
   --col-right: 196px;
   --header-h: 3.25rem;
+  --footer-h: 3rem;
   --mobile-nav-h: 3rem;
 }
 
@@ -28,7 +29,7 @@ body {
 #app-layout {
   display: grid;
   grid-template-columns: var(--col-left) 1fr var(--col-right);
-  grid-template-rows: var(--header-h) 1fr;
+  grid-template-rows: var(--header-h) 1fr auto;
   min-height: 100dvh;
 }
 
@@ -53,13 +54,29 @@ body {
   color: inherit;
 }
 
+#app-header .header-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#app-header .team-link {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--pico-muted-color, #666);
+}
+
+#app-header .team-link:hover {
+  color: var(--pico-primary, #0066cc);
+}
+
 #sidebar-left {
   grid-column: 1;
   grid-row: 2;
   overflow-y: auto;
   border-right: 1px solid var(--pico-muted-border-color, #ddd);
   padding: 0.75rem 0;
-  height: calc(100dvh - var(--header-h));
+  height: calc(100dvh - var(--header-h) - var(--footer-h));
   position: sticky;
   top: var(--header-h);
 }
@@ -78,9 +95,32 @@ body {
   overflow-y: auto;
   border-left: 1px solid var(--pico-muted-border-color, #ddd);
   padding: 0.75rem 0.5rem;
-  height: calc(100dvh - var(--header-h));
+  height: calc(100dvh - var(--header-h) - var(--footer-h));
   position: sticky;
   top: var(--header-h);
+}
+
+/* ── 頁尾 ── */
+
+#app-footer {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  border-top: 1px solid var(--pico-muted-border-color, #ddd);
+  background: var(--pico-background-color, #fff);
+}
+
+#app-footer a {
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: var(--pico-muted-color, #666);
+}
+
+#app-footer a:hover {
+  color: var(--pico-primary, #0066cc);
 }
 
 /* ── 底部導覽列 ── 樣式已移至 MobileNav.vue <style scoped>，此處僅保留 layout 相關 */
@@ -549,6 +589,10 @@ p.law-mu {
   #main-content {
     grid-column: 1;
     padding: 1rem 0.75rem calc(var(--mobile-nav-h) + 1rem);
+  }
+
+  #app-footer {
+    padding-bottom: var(--mobile-nav-h);
   }
 
   .drawer-pane {

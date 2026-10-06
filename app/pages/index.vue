@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { categoryOrder, laws as lawConfig } from '~~/config/laws.config'
+import { siteConfig } from '~~/config/site.config'
 
 interface LawItem {
   pcode: string
@@ -47,7 +48,7 @@ const grouped = computed(() => {
 
 <template>
   <div>
-    <h1>雲端法條本</h1>
+    <h1>{{ siteConfig.projectName }}</h1>
     <p class="home-intro">
       這是個人使用的法條查詢工具，目前只收錄準備我國家考試常用的法律。資料每週日從<a
         href="https://law.moj.gov.tw/"

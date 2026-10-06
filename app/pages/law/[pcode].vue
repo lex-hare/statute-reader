@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { currentLaw } from '~/composables/useCurrentLaw'
+import { siteConfig } from '~~/config/site.config'
 
 const route = useRoute()
 const pcode = computed(() => route.params.pcode as string)
@@ -13,7 +14,9 @@ watchEffect(() => {
 })
 
 useHead({
-  title: law.value ? `${(law.value as any).name} — 雲端法條本` : '雲端法條本',
+  title: law.value
+    ? `${(law.value as any).name} — ${siteConfig.projectName}`
+    : siteConfig.projectName,
 })
 
 function toChineseDate(iso: string): string {

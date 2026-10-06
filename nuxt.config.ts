@@ -1,8 +1,7 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-
 import { laws } from './config/laws.config'
+import { siteConfig } from './config/site.config'
 
-const ASSET_BASE_URL = 'https://jura.tw/favicon'
+const ASSET_BASE_URL = siteConfig.teamHomepage + '/favicon'
 
 export default defineNuxtConfig({
   modules: ['@nuxt/content'],
@@ -25,7 +24,7 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'color-scheme', content: 'light dark' },
       ],
-      title: '雲端法條本',
+      title: siteConfig.projectName,
       link: [
         {
           rel: 'apple-touch-icon',
@@ -52,7 +51,7 @@ export default defineNuxtConfig({
     },
   },
 
-  // 若採純靜態輸出，Cloudflare Pages 不需要特別設定 preset
+  // 若採純靜態輸出，Cloudflare Pages, GitHub Pages 不需要特別設定 preset
   nitro: {
     prerender: {
       // 強制預渲染所有路由
