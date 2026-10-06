@@ -60,4 +60,14 @@ export default defineNuxtConfig({
       routes: laws.map((l) => `/law/${l.pcode}`),
     },
   },
+  $production: {
+    scripts: {
+      registry: {
+        umamiAnalytics: {
+          websiteId: '8da67bd3-77dc-4c05-9f81-a055d5ff6b87',
+          trigger: 'onNuxtReady',
+        },
+      },
+    },
+  },
 })
