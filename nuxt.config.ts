@@ -4,7 +4,7 @@ import { siteConfig } from './config/site.config'
 const ASSET_BASE_URL = siteConfig.teamHomepage + '/favicon'
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', '@nuxt/scripts'],
   devtools: { enabled: true },
   future: {
     // 決定專案要採用哪一個主版本的預設行為
